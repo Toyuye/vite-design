@@ -1,0 +1,1 @@
+export * from './create-design-editor/src/index.vue';
