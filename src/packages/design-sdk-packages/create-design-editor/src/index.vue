@@ -44,7 +44,7 @@ export default defineComponent({
         })
 
         return {
-            loading
+            loading,
         }
     },
 })
@@ -59,7 +59,7 @@ export default defineComponent({
 .design-layout-main {
     display: flex;
     width: 100vw;
-    height: calc(100vh - 50px);
+    height: calc(100% - 50px);
     position: relative;
 }
 </style>
