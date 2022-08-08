@@ -82,6 +82,9 @@ import { createHeaderBarProps, createHeaderBarEmits } from "./type";
 
 export default defineComponent({
   name: "CreateHeaderBar",
+  // components:{
+  //   ArrowRight,
+  // },
   props: createHeaderBarProps,
   emits: createHeaderBarEmits,
   setup() {
@@ -147,6 +150,7 @@ export default defineComponent({
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+      flex: 1;
     }
     .setting {
       display: flex;
