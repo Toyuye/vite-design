@@ -20,8 +20,9 @@
       </div>
       <div>
         <el-breadcrumb :separator-icon="ArrowRight">
-          <el-breadcrumb-item>店铺装修平台</el-breadcrumb-item>
-          <el-breadcrumb-item>首页</el-breadcrumb-item>
+          <el-breadcrumb-item>Design-Toyuye</el-breadcrumb-item>
+          <el-breadcrumb-item>Mobile</el-breadcrumb-item>
+          <el-breadcrumb-item>home</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
     </div>
@@ -47,7 +48,7 @@
           size="default"
           split-button
           type="primary"
-          @command="v => onDropDownCommand[v]()"
+          @command="onDropDownCommand"
         >
           发布
           <template #dropdown>
@@ -100,21 +101,28 @@ export default defineComponent({
       console.log("页面保存");
     };
 
-    const onDropDownCommand = {
-      onDesignPageImmediatelyRelease: () => {
-        console.log('立即发布')
-      },
-      onDesignPageRegularRelease: () => {
-        console.log('定时发布')
-      }
-    }
+    
+    const onDropDownCommand = (v: string) => {
+      v
+    
+    };
+
+
+    const onDesignPageImmediatelyRelease = () => {
+      console.log(1)
+    };
+    
+    const onDesignPageRegularRelease = () => {
+      console.log(2)
+    };
+      
 
     return {
       goDesignPageGuide,
       onDesignPagePreview,
       onDropDownCommand,
       onDesignPageSave,
-      ArrowRight
+      ArrowRight,
     };
   },
 });
