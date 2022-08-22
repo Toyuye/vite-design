@@ -21,31 +21,31 @@ export default defineComponent({
   },
   setup() {
     onMounted(() => {
-      getLCP(console.log, true);
-      _PerformanceObserver();
+      // getLCP(console.log, true);
+      // _PerformanceObserver();
     });
 
-    const _PerformanceObserver = () => {
-      const Cobserver = new PerformanceObserver((l) => {
-        console.log(l,"sssssssssssssss");
-        console.log(l.getEntries(),'————————————————————————————————————————————————');
-      });
-      Cobserver.observe({
-        entryTypes: [
-          "element",
-          "event",
-          "first-input",
-          "largest-contentful-paint",
-          "layout-shift",
-          "longtask",
-          "mark",
-          "measure",
-          "navigation",
-          "paint",
-          "resource"
-        ],
-      });
-    };
+    // const _PerformanceObserver = () => {
+    //   const Cobserver = new PerformanceObserver((l) => {
+    //     console.log(l,"sssssssssssssss");
+    //     console.log(l.getEntries(),'————————————————————————————————————————————————');
+    //   });
+    //   Cobserver.observe({
+    //     entryTypes: [
+    //       "element",
+    //       "event",
+    //       "first-input",
+    //       "largest-contentful-paint",
+    //       "layout-shift",
+    //       "longtask",
+    //       "mark",
+    //       "measure",
+    //       "navigation",
+    //       "paint",
+    //       "resource"
+    //     ],
+    //   });
+    // };
 
     return {};
   },

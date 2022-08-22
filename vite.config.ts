@@ -14,6 +14,9 @@ export default defineConfig(({command, mode}) => {
   return {
     root: process.cwd(),
     plugins: [vue()],
+    server: {
+      port: 9000
+    },
     resolve: {
       alias: {
           '@': path.resolve(__dirname, 'src'),

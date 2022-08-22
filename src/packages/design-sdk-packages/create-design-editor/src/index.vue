@@ -7,9 +7,10 @@
         element-loading-background="rgba(0, 0, 0, 0.5)"
     >
         <CreateHeaderBar></CreateHeaderBar>
-
         <div class="design-layout-main">
             <CreateAvailableComponent></CreateAvailableComponent>
+            <CreateMobilePhoneSimulation></CreateMobilePhoneSimulation>
+            <CreateAttributeSettingsPanel></CreateAttributeSettingsPanel>
         </div>
     </div>
 </template>
@@ -27,14 +28,19 @@ import {
 
 import CreateHeaderBar from '../../create-header-bar';
 import CreateAvailableComponent from '../../create-available-component';
+import CreateMobilePhoneSimulation from '../../create-mobile-phone-simulation';
+import CreateAttributeSettingsPanel from '../../create-attribute-settings-panel';
+
+console.log(CreateAvailableComponent,'______________________>>>>')
 export default defineComponent({
     name: "CreateDesignEditor",
     components: {
         CreateHeaderBar,
-        CreateAvailableComponent
+        CreateAvailableComponent,
+         CreateMobilePhoneSimulation,
+        CreateAttributeSettingsPanel,
     },
     setup() {
-
         const loading = ref(true);
         onMounted(() => {
             console.log(loading,'loading----->>>>');
@@ -59,7 +65,7 @@ export default defineComponent({
 .design-layout-main {
     display: flex;
     width: 100vw;
-    height: calc(100% - 50px);
+    height: calc(100% - 48px);
     position: relative;
 }
 </style>

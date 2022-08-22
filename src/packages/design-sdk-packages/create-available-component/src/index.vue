@@ -6,7 +6,7 @@
           <div 
             v-for="actionItem  in [
               {icon: 'Grid', text: '组件管理器(Ctrl+shif+E)', tabsId: 'Grid'},
-              {icon: 'Search', text: '搜索(Ctrl  +shif+F)', tabsId: 'Search'}
+              {icon: 'Search', text: '搜索(Ctrl+shif+F)', tabsId: 'Search'}
             ]"
             :key="actionItem.tabsId"
           >
@@ -31,7 +31,6 @@
             v-for="actionItem  in [
               {icon: 'Avatar', text: '账号', tabsId: 'Avatar'},
               {icon: 'Tools', text: '管理', tabsId: 'Tools'},
-              
             ]"
             :key="actionItem.tabsId"
           >
@@ -51,7 +50,6 @@
         </div>
       </div>
     </div>
-    <div class=""></div>
   </div>
 </template>
 <script lang="ts">
@@ -69,7 +67,8 @@ import {
   Grid,
   Search,
   Tools,
-  Avatar
+  Avatar,
+  MoreFilled
 } from '@element-plus/icons-vue';
 import {
   createAvailableComponentProps,
@@ -84,6 +83,7 @@ export default defineComponent({
     Search,
     Tools,
     Avatar,
+    MoreFilled,
   },
   setup() {
     const onModuleTabsChange = () => {
