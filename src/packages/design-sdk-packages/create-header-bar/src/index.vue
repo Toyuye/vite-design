@@ -67,66 +67,61 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
+export default {
+  name: 'createHeaderBar'  
+}
+</script>
+
+<script lang="ts" setup>
 import {
   computed,
-  defineComponent,
   nextTick,
   onMounted,
   provide,
   ref,
   watch,
   reactive,
+  getCurrentInstance,
+  ComponentInternalInstance
 } from "vue";
 import { ArrowRight } from '@element-plus/icons-vue';
 import { createHeaderBarProps, createHeaderBarEmits } from "./type";
-
-export default defineComponent({
-  name: "CreateHeaderBar",
-  // components:{
-  //   ArrowRight,
-  // },
-  props: createHeaderBarProps,
-  emits: createHeaderBarEmits,
-  setup() {
-    const goDesignPageGuide = () => {
-      console.log("指南");
-    };
-    
-    const onDesignPagePreview = () => {
-      console.log("预览");
-    };
-    
-    const onDesignPageSave = () => {
-      console.log("页面保存");
-    };
-
-    
-    const onDropDownCommand = (v: string) => {
-      v
-    
-    };
+defineProps(createHeaderBarProps);
+defineEmits(createHeaderBarEmits);
 
 
-    const onDesignPageImmediatelyRelease = () => {
-      console.log(1)
-    };
-    
-    const onDesignPageRegularRelease = () => {
-      console.log(2)
-    };
-      
+const goDesignPageGuide = () => {
+    console.log("指南");
+  };
+  
+  const onDesignPagePreview = () => {
+    console.log("预览");
+  };
+  
+  const onDesignPageSave = () => {
+    console.log("页面保存");
+  };
+  const onDropDownCommand = (key: string) => {
+    const cx: Record<string, any> = {
+      onDesignPageImmediatelyRelease: () => {
+        console.log(1)
+      },
+      onDesignPageRegularRelease: () => {
+        console.log(2)
+      } 
+    }
+    return cx[key];
+  };
 
-    return {
-      goDesignPageGuide,
-      onDesignPagePreview,
-      onDropDownCommand,
-      onDesignPageSave,
-      ArrowRight,
-    };
-  },
-});
-</script>
+
+ 
+  
+  
+
+</script>  
+
 
 <style lang="scss">
 .design-layout-header {

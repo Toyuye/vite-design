@@ -53,6 +53,11 @@
   </div>
 </template>
 <script lang="ts">
+export default {
+  name: "CreateAvailableComponent" 
+}
+</script>
+<script lang="ts" setup>
 import {
   computed,
   defineComponent,
@@ -70,36 +75,20 @@ import {
   Avatar,
   MoreFilled
 } from '@element-plus/icons-vue';
+
 import {
   createAvailableComponentProps,
   createAvailableComponentEmits
 } from "./type";
-export default defineComponent({
-  name: "CreateAvailableComponent",
-  props: createAvailableComponentProps,
-  emits: createAvailableComponentEmits,
-  components: {
-    Grid,
-    Search,
-    Tools,
-    Avatar,
-    MoreFilled,
-  },
-  setup() {
-    const onModuleTabsChange = () => {
+
+defineEmits(createAvailableComponentEmits);
+defineProps(createAvailableComponentProps);
+
+const onModuleTabsChange = () => {
       console.log("指南");
-    };
-    
-    return {
-      onModuleTabsChange,
-      Grid,
-      Search,
-      Tools,
-      Avatar,
-    };
-  },
-});
+};
 </script>
+
 <style lang="scss">
 .design-layout-main-module {
   .activitybar {

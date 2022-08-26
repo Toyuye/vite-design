@@ -23,14 +23,7 @@ import {
 
 export default defineComponent({
   name: "CreateMobilePhoneSimulation",
-  props: {
-
-  },
-  emits: {
-
-  },
-  components: {
-  },
+ 
   setup() {
     const onModuleTabsChange = () => {
       console.log("指南");

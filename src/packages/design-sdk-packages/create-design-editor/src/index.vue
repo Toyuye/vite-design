@@ -15,6 +15,11 @@
     </div>
 </template>
 <script lang="ts">
+export default {
+    name: "CreateDesignEditor",
+}
+</script>
+<script lang="ts" setup>
 import {
   computed,
   defineComponent,
@@ -30,31 +35,14 @@ import CreateHeaderBar from '../../create-header-bar';
 import CreateAvailableComponent from '../../create-available-component';
 import CreateMobilePhoneSimulation from '../../create-mobile-phone-simulation';
 import CreateAttributeSettingsPanel from '../../create-attribute-settings-panel';
-
-console.log(CreateAvailableComponent,'______________________>>>>')
-export default defineComponent({
-    name: "CreateDesignEditor",
-    components: {
-        CreateHeaderBar,
-        CreateAvailableComponent,
-         CreateMobilePhoneSimulation,
-        CreateAttributeSettingsPanel,
-    },
-    setup() {
-        const loading = ref(true);
-        onMounted(() => {
-            console.log(loading,'loading----->>>>');
-            setTimeout(() => {
-                loading.value = false;
-            }, 2000)
-        })
-
-        return {
-            loading,
-        }
-    },
+const loading = ref(true);
+onMounted(() => {
+    setTimeout(() => {
+        loading.value = false;
+    }, 2000)
 })
 </script>
+
 <style lang="scss">
 
 .create-design-editor-wrap{

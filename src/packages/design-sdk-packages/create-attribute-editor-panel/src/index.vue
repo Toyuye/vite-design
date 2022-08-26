@@ -4,7 +4,11 @@
   </div>
 </template>
 <script lang="ts">
-
+export default {
+  name: "CreateAttributeEditorPanel",
+}
+</script>
+<script lang="ts" setup>
 import {
   computed,
   defineComponent,
@@ -22,37 +26,15 @@ import {
   Avatar,
   MoreFilled
 } from '@element-plus/icons-vue';
-
 import {
   CreateAttributeEditorPanelProps,
   CreateAttributeEditorPanelEmits
 } from "./type";
-
-export default defineComponent({
-  name: "CreateAttributeEditorPanel",
-  props: CreateAttributeEditorPanelProps,
-  emits: CreateAttributeEditorPanelEmits,
-  components: {
-    Grid,
-    Search,
-    Tools,
-    Avatar,
-    MoreFilled,
-  },
-  setup() {
-    const onModuleTabsChange = () => {
-      console.log("指南");
-    };
-    return {
-      onModuleTabsChange,
-      Grid,
-      Search,
-      Tools,
-      Avatar,
-    };
-  },
-});
+const onModuleTabsChange = () => {
+  console.log("指南");
+};
 </script>
+
 <style lang="scss">
 .design-layout-main-setting-panel {
   

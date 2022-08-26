@@ -22,21 +22,27 @@
     ></div>
     <div class="settings-panel-content-wrap">
       <el-tabs
-        stretch
+        :stretch="true"
         v-model="settingsPanelTab"
         @tab-click="onTabChangeClick"
       >
         <el-tab-pane
-          v-for=" vv in settingsPanelData.configLayout"
-          :label="settingsPanelData.configSettings[vv].nameCHN"
-          
+          v-for="item in settingsPanelData.configSettings"
+          v-show="item.hidden"
+          :label="item.tabNameCHN"
+          :name="item.key"
         ></el-tab-pane>
       </el-tabs>
     </div>
   </div>
 </template>
-
 <script lang="ts">
+export default {
+  name: "CreateAttributeSettingsPanel",
+}
+</script>
+
+<script lang="ts" setup>
 
 import {
   computed,
@@ -55,94 +61,64 @@ import {
   CreateAttributeSettingsPanelProps,
   CreateAttributeSettingsPanelEmits
 } from "./type";
+defineEmits(CreateAttributeSettingsPanelEmits);
+defineProps(CreateAttributeSettingsPanelProps);
+const settingsPanelTab = ref('attribute');
+const settingsPanelData: {
+  webComponentIdentity: string,
+  uuidLink: string,
+  title: string,
+  actionTitle: string,
+  desc: string;
+  configSettings: Array<{key: string, tabNameCHN: string, hidden: boolean}>,
+  LifeCycles: {
 
-
-export default defineComponent({
-  name: "CreateAttributeSettingsPanel",
-  props: CreateAttributeSettingsPanelProps,
-  emits: CreateAttributeSettingsPanelEmits,
-  components: {
-  },
-  setup() {
-    
-    const settingsPanelTab = ref('attribute');
-    
-    const settingsPanelData: {
-      webComponentIdentity: string,
-      uuidLink: string,
-      title: string,
-      actionTitle: string,
-      desc: string;
-      configSettings: {
-        attribute?: {
-          nameCHN: string;
-          hidden: boolean; 
-        },
-        style?:  {
-          nameCHN: string;
-          hidden: boolean;
-        },
-        senior?: {
-          nameCHN: string;
-          hidden: boolean;
-        },
-        extensions?: {
-          nameCHN: string;
-          hidden: boolean;
-        }
-      };
-      configLayout: 'attribute'| 'style' | 'senior' | 'extension'[]
-    } = {
-      webComponentIdentity: 'ToyuyeSystemGoods',
-      uuidLink: '',
-      title: '商品',
-      actionTitle: '使用说明',
-      desc: '商品组件可用于展示普通商品和积分商品，可以按照不同主题和人群等将店内在售商品配置展示在页面内，供用户浏览。',
-      configSettings: {
-        attribute: {
-          nameCHN: '属性',
-          hidden: false,
-        },
-        style: {
-          nameCHN: '样式',
-          hidden: false,
-        },
-        senior: {
-          nameCHN: '高级',
-          hidden: false
-        },
-        extensions: {
-          nameCHN: '扩展',
-          hidden: false
-        }
-      },
-      configLayout: ['attribute', 'style', 'senior', 'extension'],
-      LifeCycles: {
-        initConfigSettings: (config: any) => {
-          
-        },
-        updateconfigSettings: (config: any) => {
-
-        }
-      }
-    };
-
-    const onModuleTabsChange = () => {
-      console.log("指南");
-    };
-
-    const onTabChangeClick = (tab: TabsPaneContext, event: Event) => {
-      console.log(tab, event)
+  }
+} = {
+  webComponentIdentity: 'ToyuyeSystemGoods',
+  uuidLink: '',
+  title: '商品',
+  actionTitle: '使用说明',
+  desc: '商品组件可用于展示普通商品和积分商品，可以按照不同主题和人群等将店内在售商品配置展示在页面内，供用户浏览。',
+  configSettings: [
+    {
+      key: 'attribute',
+      tabNameCHN: '属性',
+      hidden: false,
+    },
+    {
+      key: 'style', 
+      tabNameCHN: '样式',
+      hidden: false,
+    },
+    {
+      key: 'senior',
+      tabNameCHN: '高级',
+      hidden: false
+    },
+    {
+      key: 'extension',
+      tabNameCHN: '扩展',
+      hidden: false
     }
+  ],
+  LifeCycles: {
+    initConfigSettings: (config: any) => {
+      
+    },
+    updateconfigSettings: (config: any) => {
 
-    return {
-      settingsPanelData,
-      onModuleTabsChange,
-      settingsPanelTab,
-      onTabChangeClick
-    };
-  },
-});
+    }
+  }
+};
+
+const onModuleTabsChange = () => {
+  console.log("指南");
+};
+
+const onTabChangeClick = (tab: TabsPaneContext, event: Event) => {
+  console.log(tab, event)
+}
 </script>
 <style lang="scss">
 .design-layout-main-settings-panel {
