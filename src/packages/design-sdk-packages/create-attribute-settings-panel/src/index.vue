@@ -1,7 +1,7 @@
 <template>
   <div class="design-layout-main-settings-panel">
     <div class="settings-panel-title-wrap">
-      <div>{{settingsPanelData.title}}</div>
+      <div  class="panel-title">{{settingsPanelData.title}}</div>
       <div>
         <el-button
           text
@@ -63,51 +63,130 @@ import {
 } from "./type";
 defineEmits(CreateAttributeSettingsPanelEmits);
 defineProps(CreateAttributeSettingsPanelProps);
-const settingsPanelTab = ref('attribute');
+const settingsPanelTab = ref('styleCss');
 const settingsPanelData: {
-  webComponentIdentity: string,
-  uuidLink: string,
+  webComponentLink?: string;
+  webComponentName: string,
+  linkUUID: string,
   title: string,
   actionTitle: string,
   desc: string;
-  configSettings: Array<{key: string, tabNameCHN: string, hidden: boolean}>,
+  configSettings: Array<{key: string, tabNameCHN: string, hidden: boolean, layout?: Array<any>}>,
+  cover: {
+
+  },
   LifeCycles: {
 
   }
 } = {
-  webComponentIdentity: 'ToyuyeSystemGoods',
-  uuidLink: '',
+  webComponentLink: '',
+  webComponentName: '@system/h5/goods',
+  linkUUID: '',
   title: '商品',
   actionTitle: '使用说明',
   desc: '商品组件可用于展示普通商品和积分商品，可以按照不同主题和人群等将店内在售商品配置展示在页面内，供用户浏览。',
   configSettings: [
     {
+      key: 'styleCss', 
+      tabNameCHN: '样式',
+      hidden: false,
+      layout: [
+        {
+        // 当前写法针对 合并组件
+         attributeComponentName: {
+            '@system/attribute/button': {
+              value: 'childItem.jessie'
+            }
+         },
+         attributeComponentLink: '',
+         defaultProps: {
+          value: [],
+          templateResetValue: false,
+          resetDefaultValue: []
+         },
+         responseValue: [],
+        }
+      ]
+    },
+    {
       key: 'attribute',
       tabNameCHN: '属性',
       hidden: false,
-    },
-    {
-      key: 'style', 
-      tabNameCHN: '样式',
-      hidden: false,
+      layout: [
+        {
+         attributeComponentName: '@system/attribute/button',
+         attributeComponentLink: '',
+         defaultProps: {
+          value: [],
+          templateResetValue: false,
+          resetDefaultValue: []
+         },
+         responseValue: [],
+        }
+      ],
     },
     {
       key: 'senior',
       tabNameCHN: '高级',
-      hidden: false
+      hidden: false,
+      layout: [
+        {
+         attributeComponentName: '@system/attribute/button',
+         attributeComponentLink: '',
+         defaultProps: {
+          value: [],
+          templateResetValue: false,
+          resetDefaultValue: []
+         },
+         responseValue: [],
+        }
+      ]
     },
     {
       key: 'extension',
       tabNameCHN: '扩展',
-      hidden: false
+      hidden: false,
+      layout: [
+        {
+         attributeComponentName: '@system/attribute/button',
+         attributeComponentLink: '',
+         defaultProps: {
+          value: [],
+          templateResetValue: false,
+          resetDefaultValue: []
+         },
+         responseValue: [],
+        }
+      ]
     }
   ],
+  cover: {
+    styleCss: {
+      style: {
+        background: 'pink'
+      }
+    },
+    attribute: {
+      jessie: 100,
+    },
+    senior: {
+      handler: {
+
+      }
+    },
+    extension: {
+      cc: 999
+    }
+  },
   LifeCycles: {
     initConfigSettings: (config: any) => {
-      
+      console.log(config)
     },
     updateconfigSettings: (config: any) => {
-
+      console.log(config)
+    },
+    requestFilter(config: any) {
+      console.log(config);
     }
   }
 };
@@ -121,6 +200,7 @@ const onTabChangeClick = (tab: TabsPaneContext, event: Event) => {
 }
 </script>
 <style lang="scss">
+
 .design-layout-main-settings-panel {
   width: 360px;
   height: 100%;
@@ -133,6 +213,9 @@ const onTabChangeClick = (tab: TabsPaneContext, event: Event) => {
     align-items: center;
     line-height: 24px;
     padding: 10px 5px;
+    .panel-title {
+      
+    }
   }
   .settings-panel-content-wrap {
     padding: 5px 0;
