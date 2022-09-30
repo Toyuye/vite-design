@@ -10,13 +10,13 @@
     "@element-plus/icons-vue": "^2.0.9",
     "element-plus": "^2.2.14",
     "lodash": "^4.17.21",
+    "pinia": "^2.0.22",
     "systemjs": "^6.12.1",
     "systemjs-babel": "^0.3.1",
     "tinycolor2": "^1.4.2",
     "vue": "^3.2.37",
     "vue-router": "^4.0.12",
     "vuedraggable": "^4.1.0",
-    "vuex": "^4.0.2",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {

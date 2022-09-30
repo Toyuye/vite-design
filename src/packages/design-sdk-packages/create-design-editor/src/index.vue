@@ -36,6 +36,18 @@ import CreateAvailableComponent from '../../create-available-component';
 import CreateMobilePhoneSimulation from '../../create-mobile-phone-simulation';
 import CreateAttributeSettingsPanel from '../../create-attribute-settings-panel';
 const loading = ref(true);
+
+const state =  ref({
+    list: [{
+        componentName: '@system/h5/goods',
+        componentLink: '',
+        
+    }],
+    componentName: 'page',
+    title: '页面标题',
+});
+
+
 onMounted(() => {
     setTimeout(() => {
         loading.value = false;

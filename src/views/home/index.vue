@@ -9,9 +9,9 @@ import { defineComponent, onMounted } from "vue";
 // import cc from "systemjs";
 import { getLCP, getFID, getCLS } from "web-vitals";
 
-getCLS(console.log);
-getFID(console.log);
-getLCP(console.log);
+// getCLS(console.log);
+// getFID(console.log);
+// getLCP(console.log);
 
 import DesignEditor from "@/packages/design-sdk-packages/create-design-editor/src/index.vue";
 export default defineComponent({
